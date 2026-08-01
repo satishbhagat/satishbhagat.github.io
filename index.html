@@ -418,12 +418,19 @@
         <div class="max-w-6xl mx-auto px-4">
 
             <!-- Toggle header -->
-            <button onclick="togglePoems()" class="w-full flex items-center justify-between group text-left py-2 focus:outline-none">
-                <div>
-                    <h2 class="text-3xl font-bold text-gray-900 group-hover:text-blue-600 transition">My Poems</h2>
-                    <p class="text-gray-400 text-sm mt-1">Hindi Poems</p>
+            <button onclick="togglePoems()" class="w-full flex items-center justify-between group text-left py-4 focus:outline-none">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-400 to-rose-500 flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow flex-shrink-0">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-900 group-hover:text-amber-600 transition">My Poems</h2>
+                        <p class="text-gray-400 text-sm mt-0.5">Hindi Poems</p>
+                    </div>
                 </div>
-                <span id="poems-toggle-icon" class="text-4xl font-light text-gray-300 group-hover:text-blue-500 transition leading-none select-none">+</span>
+                <span id="poems-toggle-icon" class="text-4xl font-light text-gray-300 group-hover:text-amber-500 transition leading-none select-none">+</span>
             </button>
 
             <!-- Collapsible body -->
@@ -431,229 +438,75 @@
 
                 <!-- ── Index view ── -->
                 <div id="poems-index">
-                    <div class="grid md:grid-cols-2 gap-6">
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
 
-                        <!-- Index card 1 -->
-                        <button onclick="showPoem('poem1')" class="bg-gray-50 rounded-xl border border-gray-100 overflow-hidden text-left hover:shadow-md hover:border-amber-300 transition-all group">
-                            <svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg" class="w-full h-40">
-                                <defs>
-                                    <linearGradient id="idx-sky1" x1="0" y1="0" x2="0" y2="1">
-                                        <stop offset="0%" stop-color="#fef3c7"/>
-                                        <stop offset="100%" stop-color="#fdba74"/>
-                                    </linearGradient>
-                                    <radialGradient id="idx-glow1" cx="50%" cy="80%" r="60%">
-                                        <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.5"/>
-                                        <stop offset="100%" stop-color="#fef3c7" stop-opacity="0"/>
-                                    </radialGradient>
-                                    <clipPath id="idx-clip1"><rect x="0" y="0" width="400" height="112"/></clipPath>
-                                </defs>
-                                <rect width="400" height="160" fill="url(#idx-sky1)"/>
-                                <ellipse cx="200" cy="112" rx="120" ry="55" fill="url(#idx-glow1)"/>
-                                <circle cx="200" cy="112" r="44" fill="#f59e0b" opacity="0.85" clip-path="url(#idx-clip1)"/>
-                                <circle cx="200" cy="112" r="30" fill="#fbbf24" clip-path="url(#idx-clip1)"/>
-                                <rect x="0" y="112" width="400" height="48" fill="#d97706" opacity="0.18"/>
-                                <path d="M0 112 Q90 80 170 112" fill="#92400e" opacity="0.28"/>
-                                <path d="M230 112 Q310 75 400 112" fill="#92400e" opacity="0.22"/>
-                                <circle cx="84" cy="84" r="6" fill="#1c1917"/>
-                                <line x1="84" y1="90" x2="84" y2="105" stroke="#1c1917" stroke-width="3" stroke-linecap="round"/>
-                                <line x1="84" y1="95" x2="75" y2="103" stroke="#1c1917" stroke-width="2" stroke-linecap="round"/>
-                                <line x1="84" y1="95" x2="93" y2="100" stroke="#1c1917" stroke-width="2" stroke-linecap="round"/>
-                                <line x1="84" y1="105" x2="78" y2="115" stroke="#1c1917" stroke-width="2" stroke-linecap="round"/>
-                                <line x1="84" y1="105" x2="90" y2="115" stroke="#1c1917" stroke-width="2" stroke-linecap="round"/>
-                            </svg>
-                            <div class="p-5">
-                                <h4 class="font-bold text-gray-900 text-lg">अभी तो उठा हूँ</h4>
-                                <p class="text-xs text-amber-600 font-semibold mt-0.5 mb-3 tracking-wide">ABHI TO UTHA HUN</p>
-                                <p class="text-sm text-gray-500 italic leading-relaxed">बेहोश सा खड़ा हूँ, है उम्र भर की निंद, फिर भी जागा हूँ...</p>
-                                <p class="text-xs text-amber-600 font-semibold mt-4 group-hover:underline">Read poem →</p>
+                        <!-- Poem 1: Abhi to utha hun -->
+                        <button onclick="showPoem('poem1')" class="group text-left rounded-2xl overflow-hidden border border-gray-100 hover:border-amber-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-200 bg-white">
+                            <div class="bg-gradient-to-br from-amber-50 via-orange-50 to-amber-100 px-6 py-8 flex flex-col items-center gap-3 relative overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-br from-amber-400/10 to-orange-300/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                <span class="text-5xl drop-shadow-sm">🌅</span>
+                                <h4 class="text-xl font-bold text-gray-900 text-center leading-snug">अभी तो उठा हूँ</h4>
+                                <p class="text-xs text-amber-600 font-bold tracking-widest uppercase">Abhi To Utha Hun</p>
+                            </div>
+                            <div class="px-5 py-4 border-t border-amber-50">
+                                <p class="text-sm text-gray-500 italic leading-relaxed line-clamp-2">बेहोश सा खड़ा हूँ, है उम्र भर की निंद, फिर भी जागा हूँ...</p>
+                                <p class="text-xs text-amber-500 font-semibold mt-3 group-hover:text-amber-700 transition">Read poem →</p>
                             </div>
                         </button>
 
-                        <!-- Index card 2 -->
-                        <button onclick="showPoem('poem2')" class="bg-gray-50 rounded-xl border border-gray-100 overflow-hidden text-left hover:shadow-md hover:border-indigo-300 transition-all group">
-                            <svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg" class="w-full h-40">
-                                <defs>
-                                    <linearGradient id="idx-sky2" x1="0" y1="0" x2="0" y2="1">
-                                        <stop offset="0%" stop-color="#1e1b4b"/>
-                                        <stop offset="100%" stop-color="#3730a3"/>
-                                    </linearGradient>
-                                    <radialGradient id="idx-moon2" cx="72%" cy="22%" r="35%">
-                                        <stop offset="0%" stop-color="#e0e7ff" stop-opacity="0.3"/>
-                                        <stop offset="100%" stop-color="#1e1b4b" stop-opacity="0"/>
-                                    </radialGradient>
-                                </defs>
-                                <rect width="400" height="160" fill="url(#idx-sky2)"/>
-                                <ellipse cx="290" cy="35" rx="70" ry="42" fill="url(#idx-moon2)"/>
-                                <circle cx="290" cy="35" r="22" fill="#e0e7ff"/>
-                                <circle cx="300" cy="29" r="18" fill="#2e2a6e"/>
-                                <circle cx="48" cy="18" r="1.2" fill="#c7d2fe" opacity="0.8"/>
-                                <circle cx="130" cy="30" r="1" fill="#c7d2fe" opacity="0.6"/>
-                                <circle cx="190" cy="12" r="1.2" fill="#c7d2fe" opacity="0.7"/>
-                                <circle cx="28" cy="55" r="1.2" fill="#c7d2fe" opacity="0.55"/>
-                                <rect x="0" y="130" width="400" height="30" fill="#1e1b4b"/>
-                                <path d="M100 160 C100 130 110 105 115 85 C118 70 125 62 130 52" stroke="#a5b4fc" stroke-width="6" fill="none" stroke-linecap="round"/>
-                                <path d="M130 52 C152 47 170 50 180 58" stroke="#a5b4fc" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-                                <path d="M180 58 C194 68 188 78 178 76" stroke="#a5b4fc" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-                                <path d="M120 76 C142 69 157 72 162 81" stroke="#a5b4fc" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-                                <g stroke="#a5b4fc" stroke-width="1.2" stroke-linecap="round" opacity="0.4">
-                                    <line x1="240" y1="30" x2="237" y2="43"/>
-                                    <line x1="258" y1="45" x2="255" y2="58"/>
-                                    <line x1="340" y1="55" x2="337" y2="68"/>
-                                    <line x1="360" y1="95" x2="357" y2="108"/>
-                                    <line x1="210" y1="50" x2="207" y2="63"/>
-                                    <line x1="52" y1="50" x2="49" y2="63"/>
-                                    <line x1="65" y1="80" x2="62" y2="93"/>
-                                </g>
-                            </svg>
-                            <div class="p-5">
-                                <h4 class="font-bold text-gray-900 text-lg">फिर वहीं से शुरू करता</h4>
-                                <p class="text-xs text-indigo-600 font-semibold mt-0.5 mb-3 tracking-wide">FIR WAHIN SE SHURU KARTA</p>
-                                <p class="text-sm text-gray-500 italic leading-relaxed">जिसपे बात ख़त्म हुई थी, जिस पेड़ की शाख़ झुकी थी...</p>
-                                <p class="text-xs text-indigo-600 font-semibold mt-4 group-hover:underline">Read poem →</p>
+                        <!-- Poem 2: Fir wahin se -->
+                        <button onclick="showPoem('poem2')" class="group text-left rounded-2xl overflow-hidden border border-gray-100 hover:border-indigo-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-200 bg-white">
+                            <div class="bg-gradient-to-br from-indigo-900 via-indigo-800 to-violet-900 px-6 py-8 flex flex-col items-center gap-3 relative overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-br from-indigo-400/10 to-violet-300/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                <span class="text-5xl drop-shadow-sm">🌙</span>
+                                <h4 class="text-xl font-bold text-indigo-100 text-center leading-snug">फिर वहीं से शुरू</h4>
+                                <p class="text-xs text-indigo-300 font-bold tracking-widest uppercase">Fir Wahin Se Shuru</p>
+                            </div>
+                            <div class="px-5 py-4 border-t border-indigo-50">
+                                <p class="text-sm text-gray-500 italic leading-relaxed line-clamp-2">जिसपे बात ख़त्म हुई थी, जिस पेड़ की शाख़ झुकी थी...</p>
+                                <p class="text-xs text-indigo-500 font-semibold mt-3 group-hover:text-indigo-700 transition">Read poem →</p>
                             </div>
                         </button>
 
-                        <!-- Index card 3 -->
-                        <button onclick="showPoem('poem3')" class="bg-gray-50 rounded-xl border border-gray-100 overflow-hidden text-left hover:shadow-md hover:border-violet-300 transition-all group md:col-span-2">
-                            <svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg" class="w-full h-40">
-                                <defs>
-                                    <linearGradient id="idx-sky3" x1="0" y1="0" x2="0" y2="1">
-                                        <stop offset="0%" stop-color="#0f0720"/>
-                                        <stop offset="100%" stop-color="#2d1b69"/>
-                                    </linearGradient>
-                                    <radialGradient id="idx-flame3" cx="50%" cy="90%" r="42%">
-                                        <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.7"/>
-                                        <stop offset="100%" stop-color="#1e1035" stop-opacity="0"/>
-                                    </radialGradient>
-                                </defs>
-                                <rect width="400" height="160" fill="url(#idx-sky3)"/>
-                                <circle cx="50"  cy="20" r="1.5" fill="#fbbf24" opacity="0.9"/>
-                                <circle cx="120" cy="35" r="1"   fill="#fbbf24" opacity="0.7"/>
-                                <circle cx="200" cy="12" r="1.5" fill="#fbbf24" opacity="0.8"/>
-                                <circle cx="280" cy="28" r="1"   fill="#fbbf24" opacity="0.65"/>
-                                <circle cx="350" cy="18" r="1.5" fill="#fbbf24" opacity="0.85"/>
-                                <circle cx="80"  cy="52" r="1"   fill="#fbbf24" opacity="0.5"/>
-                                <circle cx="160" cy="46" r="1.2" fill="#fbbf24" opacity="0.62"/>
-                                <circle cx="320" cy="50" r="1"   fill="#fbbf24" opacity="0.55"/>
-                                <circle cx="380" cy="40" r="1.2" fill="#fbbf24" opacity="0.7"/>
-                                <circle cx="30"  cy="68" r="0.8" fill="#fbbf24" opacity="0.45"/>
-                                <path d="M0 130 L60 78 L100 108 L160 52 L210 88 L260 62 L300 92 L360 56 L400 80 L400 160 L0 160 Z" fill="#1e1035" opacity="0.9"/>
-                                <ellipse cx="200" cy="148" rx="65" ry="28" fill="url(#idx-flame3)"/>
-                                <ellipse cx="200" cy="155" rx="14" ry="5" fill="#92400e"/>
-                                <path d="M200 155 C196 142 193 130 200 122 C207 130 204 142 200 155 Z" fill="#f59e0b"/>
-                                <path d="M200 155 C197 144 196 134 200 128 C204 134 203 144 200 155 Z" fill="#fbbf24"/>
-                                <path d="M200 155 C199 147 198 139 200 133 C202 139 201 147 200 155 Z" fill="#fef3c7"/>
-                                <circle cx="200" cy="124" r="4" fill="#fef3c7" opacity="0.65"/>
-                            </svg>
-                            <div class="p-5 flex items-start gap-6">
-                                <div class="flex-1">
-                                    <h4 class="font-bold text-gray-900 text-lg">स्वप्न ही</h4>
-                                    <p class="text-xs text-violet-600 font-semibold mt-0.5 mb-3 tracking-wide">SWAPN HI &mdash; JAAGTE RAHEIN</p>
-                                    <p class="text-sm text-gray-500 italic leading-relaxed">स्वप्न ही जीवन को दिशा देते हैं, आशा का दीप जला देते हैं...</p>
-                                </div>
-                                <p class="text-xs text-violet-600 font-semibold mt-1 whitespace-nowrap group-hover:underline">Read poem →</p>
+                        <!-- Poem 3: Swapn hi -->
+                        <button onclick="showPoem('poem3')" class="group text-left rounded-2xl overflow-hidden border border-gray-100 hover:border-violet-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-200 bg-white">
+                            <div class="bg-gradient-to-br from-violet-950 via-purple-900 to-slate-900 px-6 py-8 flex flex-col items-center gap-3 relative overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-br from-violet-400/10 to-purple-300/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                <span class="text-5xl drop-shadow-sm">🕯️</span>
+                                <h4 class="text-xl font-bold text-violet-100 text-center leading-snug">स्वप्न ही</h4>
+                                <p class="text-xs text-violet-300 font-bold tracking-widest uppercase">Swapn Hi</p>
+                            </div>
+                            <div class="px-5 py-4 border-t border-violet-50">
+                                <p class="text-sm text-gray-500 italic leading-relaxed line-clamp-2">स्वप्न ही जीवन को दिशा देते हैं, आशा का दीप जला देते हैं...</p>
+                                <p class="text-xs text-violet-500 font-semibold mt-3 group-hover:text-violet-700 transition">Read poem →</p>
                             </div>
                         </button>
 
-                        <!-- Index card 4: Bachpan -->
-                        <button onclick="showPoem('poem4')" class="bg-gray-50 rounded-xl border border-gray-100 overflow-hidden text-left hover:shadow-md hover:border-orange-300 transition-all group">
-                            <svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg" class="w-full h-40">
-                                <defs>
-                                    <linearGradient id="idx-sky4" x1="0" y1="0" x2="0" y2="1">
-                                        <stop offset="0%" stop-color="#fef9c3"/>
-                                        <stop offset="100%" stop-color="#fed7aa"/>
-                                    </linearGradient>
-                                </defs>
-                                <rect width="400" height="160" fill="url(#idx-sky4)"/>
-                                <circle cx="338" cy="36" r="26" fill="#fbbf24" opacity="0.85"/>
-                                <circle cx="338" cy="36" r="18" fill="#fef08a"/>
-                                <g stroke="#fcd34d" stroke-width="1.8" opacity="0.5">
-                                    <line x1="338" y1="4"  x2="338" y2="-4"/>
-                                    <line x1="364" y1="12" x2="372" y2="5"/>
-                                    <line x1="372" y1="36" x2="382" y2="36"/>
-                                    <line x1="364" y1="60" x2="372" y2="67"/>
-                                    <line x1="312" y1="12" x2="304" y2="5"/>
-                                    <line x1="304" y1="36" x2="294" y2="36"/>
-                                </g>
-                                <path d="M158 16 L184 54 L158 92 L132 54 Z" fill="#ef4444" opacity="0.88"/>
-                                <line x1="132" y1="54" x2="184" y2="54" stroke="#dc2626" stroke-width="1.5" opacity="0.45"/>
-                                <line x1="158" y1="16" x2="158" y2="92" stroke="#dc2626" stroke-width="1.5" opacity="0.45"/>
-                                <path d="M158 92 Q178 112 194 126 Q208 138 218 148" stroke="#92400e" stroke-width="1.5" fill="none" opacity="0.5" stroke-dasharray="3 3"/>
-                                <ellipse cx="188" cy="116" rx="5" ry="3" fill="#f97316" opacity="0.7" transform="rotate(-25 188 116)"/>
-                                <ellipse cx="208" cy="136" rx="5" ry="3" fill="#84cc16" opacity="0.7" transform="rotate(-25 208 136)"/>
-                                <path d="M0 138 Q80 112 155 132 Q220 148 290 128 Q345 112 400 134 L400 160 L0 160 Z" fill="#4ade80" opacity="0.4"/>
-                                <path d="M0 153 Q90 142 180 150 Q270 157 380 147 L400 150 L400 160 L0 160 Z" fill="#22c55e" opacity="0.32"/>
-                                <circle cx="70" cy="128" r="5" fill="#78350f" opacity="0.72"/>
-                                <line x1="70" y1="133" x2="70" y2="146" stroke="#78350f" stroke-width="3" stroke-linecap="round" opacity="0.72"/>
-                                <line x1="70" y1="138" x2="62" y2="145" stroke="#78350f" stroke-width="2" stroke-linecap="round" opacity="0.72"/>
-                                <line x1="70" y1="138" x2="78" y2="145" stroke="#78350f" stroke-width="2" stroke-linecap="round" opacity="0.72"/>
-                                <path d="M78 138 Q105 98 132 54" stroke="#92400e" stroke-width="1" fill="none" opacity="0.38"/>
-                                <circle cx="95" cy="132" r="4.5" fill="#78350f" opacity="0.62"/>
-                                <line x1="95" y1="136" x2="95" y2="149" stroke="#78350f" stroke-width="2.5" stroke-linecap="round" opacity="0.62"/>
-                            </svg>
-                            <div class="p-5">
-                                <h4 class="font-bold text-gray-900 text-lg">बचपन</h4>
-                                <p class="text-xs text-orange-600 font-semibold mt-0.5 mb-3 tracking-wide">BACHPAN</p>
-                                <p class="text-sm text-gray-500 italic leading-relaxed">सच्चे दोस्त, प्यारी यादें, निश्छल हंसी, शैतानी बातें...</p>
-                                <p class="text-xs text-orange-600 font-semibold mt-4 group-hover:underline">Read poem →</p>
+                        <!-- Poem 4: Bachpan -->
+                        <button onclick="showPoem('poem4')" class="group text-left rounded-2xl overflow-hidden border border-gray-100 hover:border-orange-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-200 bg-white">
+                            <div class="bg-gradient-to-br from-orange-50 via-yellow-50 to-lime-50 px-6 py-8 flex flex-col items-center gap-3 relative overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-br from-orange-400/10 to-yellow-300/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                <span class="text-5xl drop-shadow-sm">🪁</span>
+                                <h4 class="text-xl font-bold text-gray-900 text-center leading-snug">बचपन</h4>
+                                <p class="text-xs text-orange-600 font-bold tracking-widest uppercase">Bachpan</p>
+                            </div>
+                            <div class="px-5 py-4 border-t border-orange-50">
+                                <p class="text-sm text-gray-500 italic leading-relaxed line-clamp-2">सच्चे दोस्त, प्यारी यादें, निश्छल हंसी, शैतानी बातें...</p>
+                                <p class="text-xs text-orange-500 font-semibold mt-3 group-hover:text-orange-700 transition">Read poem →</p>
                             </div>
                         </button>
 
-                        <!-- Index card 5: Barish -->
-                        <button onclick="showPoem('poem5')" class="bg-gray-50 rounded-xl border border-gray-100 overflow-hidden text-left hover:shadow-md hover:border-cyan-300 transition-all group">
-                            <svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg" class="w-full h-40">
-                                <defs>
-                                    <linearGradient id="idx-sky5" x1="0" y1="0" x2="0" y2="1">
-                                        <stop offset="0%" stop-color="#94a3b8"/>
-                                        <stop offset="55%" stop-color="#bae6fd"/>
-                                        <stop offset="100%" stop-color="#7dd3fc"/>
-                                    </linearGradient>
-                                </defs>
-                                <rect width="400" height="160" fill="url(#idx-sky5)"/>
-                                <ellipse cx="80"  cy="24" rx="55" ry="18" fill="#cbd5e1" opacity="0.92"/>
-                                <ellipse cx="118" cy="18" rx="40" ry="14" fill="#e2e8f0" opacity="0.85"/>
-                                <ellipse cx="50"  cy="28" rx="34" ry="12" fill="#cbd5e1" opacity="0.8"/>
-                                <ellipse cx="285" cy="28" rx="65" ry="20" fill="#cbd5e1" opacity="0.9"/>
-                                <ellipse cx="325" cy="22" rx="45" ry="15" fill="#e2e8f0" opacity="0.85"/>
-                                <ellipse cx="262" cy="32" rx="38" ry="13" fill="#cbd5e1" opacity="0.75"/>
-                                <g stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round" opacity="0.52">
-                                    <line x1="30"  y1="52" x2="24"  y2="68"/>
-                                    <line x1="60"  y1="45" x2="54"  y2="61"/>
-                                    <line x1="90"  y1="58" x2="84"  y2="74"/>
-                                    <line x1="120" y1="48" x2="114" y2="64"/>
-                                    <line x1="150" y1="55" x2="144" y2="71"/>
-                                    <line x1="180" y1="44" x2="174" y2="60"/>
-                                    <line x1="210" y1="54" x2="204" y2="70"/>
-                                    <line x1="240" y1="46" x2="234" y2="62"/>
-                                    <line x1="270" y1="60" x2="264" y2="76"/>
-                                    <line x1="300" y1="48" x2="294" y2="64"/>
-                                    <line x1="330" y1="56" x2="324" y2="72"/>
-                                    <line x1="360" y1="44" x2="354" y2="60"/>
-                                    <line x1="390" y1="58" x2="384" y2="74"/>
-                                    <line x1="45"  y1="80" x2="39"  y2="96"/>
-                                    <line x1="75"  y1="74" x2="69"  y2="90"/>
-                                    <line x1="105" y1="86" x2="99"  y2="102"/>
-                                    <line x1="135" y1="76" x2="129" y2="92"/>
-                                    <line x1="165" y1="84" x2="159" y2="100"/>
-                                    <line x1="225" y1="80" x2="219" y2="96"/>
-                                    <line x1="255" y1="74" x2="249" y2="90"/>
-                                    <line x1="315" y1="76" x2="309" y2="92"/>
-                                    <line x1="375" y1="70" x2="369" y2="86"/>
-                                </g>
-                                <rect x="0" y="128" width="400" height="32" fill="#38bdf8" opacity="0.28"/>
-                                <rect x="0" y="138" width="400" height="22" fill="#0ea5e9" opacity="0.18"/>
-                                <ellipse cx="75"  cy="134" rx="18" ry="5" fill="none" stroke="#7dd3fc" stroke-width="1" opacity="0.48"/>
-                                <ellipse cx="200" cy="138" rx="22" ry="6" fill="none" stroke="#7dd3fc" stroke-width="1" opacity="0.48"/>
-                                <ellipse cx="320" cy="133" rx="16" ry="4" fill="none" stroke="#7dd3fc" stroke-width="1" opacity="0.48"/>
-                                <path d="M183 130 L217 130 L212 142 L188 142 Z" fill="#fef3c7" stroke="#d97706" stroke-width="1"/>
-                                <path d="M200 130 L200 113 L216 126 Z" fill="#fbbf24" opacity="0.85"/>
-                                <line x1="200" y1="113" x2="200" y2="130" stroke="#92400e" stroke-width="1.5"/>
-                            </svg>
-                            <div class="p-5">
-                                <h4 class="font-bold text-gray-900 text-lg">बारिश</h4>
-                                <p class="text-xs text-cyan-600 font-semibold mt-0.5 mb-3 tracking-wide">BARISH</p>
-                                <p class="text-sm text-gray-500 italic leading-relaxed">याद वो अचानक माँ का चिल्लाना, बूनी आ गईल, कपड़ा है हटाना...</p>
-                                <p class="text-xs text-cyan-600 font-semibold mt-4 group-hover:underline">Read poem →</p>
+                        <!-- Poem 5: Barish -->
+                        <button onclick="showPoem('poem5')" class="group text-left rounded-2xl overflow-hidden border border-gray-100 hover:border-cyan-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-200 bg-white">
+                            <div class="bg-gradient-to-br from-slate-600 via-cyan-700 to-sky-800 px-6 py-8 flex flex-col items-center gap-3 relative overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-br from-cyan-400/10 to-sky-300/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                <span class="text-5xl drop-shadow-sm">⛵</span>
+                                <h4 class="text-xl font-bold text-cyan-100 text-center leading-snug">बारिश</h4>
+                                <p class="text-xs text-cyan-300 font-bold tracking-widest uppercase">Barish</p>
+                            </div>
+                            <div class="px-5 py-4 border-t border-cyan-50">
+                                <p class="text-sm text-gray-500 italic leading-relaxed line-clamp-2">याद वो अचानक माँ का चिल्लाना, बूनी आ गईल, कपड़ा है हटाना...</p>
+                                <p class="text-xs text-cyan-600 font-semibold mt-3 group-hover:text-cyan-800 transition">Read poem →</p>
                             </div>
                         </button>
 
