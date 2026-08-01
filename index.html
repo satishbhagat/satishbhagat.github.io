@@ -90,162 +90,153 @@
         </div>
     </section>
 
-    <!-- ═══════════════════ APPS SECTION ═══════════════════ -->
-    <section id="apps" class="hidden py-20 bg-white">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center text-gray-900 mb-4">Mobile Apps</h2>
-            <p class="text-center text-gray-500 mb-12 max-w-xl mx-auto">Side projects I built from scratch — end-to-end, from architecture to App Store.</p>
+    <!-- ═══════════════════ APP DETAIL MODAL ═══════════════════ -->
+    <div id="app-modal" class="hidden fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/50 backdrop-blur-sm" onclick="if(event.target===this)closeAppModal()">
+        <div class="bg-white w-full sm:max-w-2xl sm:rounded-2xl rounded-t-2xl shadow-2xl max-h-[92vh] overflow-y-auto">
 
-            <div class="grid md:grid-cols-2 gap-8">
-
-                <!-- FinTrack -->
-                <div id="app-fintrack" class="rounded-2xl border border-gray-100 shadow-sm overflow-hidden flex flex-col">
-                    <!-- Header band -->
-                    <div class="bg-gradient-to-br from-emerald-500 to-teal-600 p-6 flex items-center gap-4">
-                        <div class="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center flex-shrink-0">
-                            <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" class="w-8 h-8">
-                                <rect x="4" y="22" width="6" height="14" rx="1.5" fill="white" opacity="0.9"/>
-                                <rect x="13" y="14" width="6" height="22" rx="1.5" fill="white" opacity="0.9"/>
-                                <rect x="22" y="8"  width="6" height="28" rx="1.5" fill="white" opacity="0.9"/>
-                                <rect x="31" y="16" width="6" height="20" rx="1.5" fill="white" opacity="0.9"/>
-                                <path d="M6 18 L16 12 L25 6 L34 14" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
-                            </svg>
+            <!-- FinTrack content -->
+            <div id="modal-fintrack" class="hidden">
+                <div class="bg-gradient-to-br from-emerald-500 to-teal-600 p-6 flex items-center gap-4 rounded-t-2xl">
+                    <div class="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center flex-shrink-0">
+                        <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" class="w-8 h-8">
+                            <rect x="4" y="22" width="6" height="14" rx="1.5" fill="white" opacity="0.9"/>
+                            <rect x="13" y="14" width="6" height="22" rx="1.5" fill="white" opacity="0.9"/>
+                            <rect x="22" y="8"  width="6" height="28" rx="1.5" fill="white" opacity="0.9"/>
+                            <rect x="31" y="16" width="6" height="20" rx="1.5" fill="white" opacity="0.9"/>
+                            <path d="M6 18 L16 12 L25 6 L34 14" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-xl font-bold text-white">FinTrack</h3>
+                        <p class="text-emerald-100 text-sm">Smart Budget Planner</p>
+                    </div>
+                    <div class="flex gap-2 mr-3">
+                        <span class="px-2 py-1 bg-white/20 text-white text-xs font-semibold rounded-full">Android</span>
+                        <span class="px-2 py-1 bg-white/20 text-white text-xs font-semibold rounded-full">iOS</span>
+                    </div>
+                    <button onclick="closeAppModal()" class="text-white/70 hover:text-white transition text-2xl leading-none">&times;</button>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                        A personal finance app that automates expense tracking — parsing bank SMS, scanning receipts, and reading credit card emails — so you always know where your money went without the manual work.
+                    </p>
+                    <!-- Screenshots -->
+                    <p class="text-xs text-gray-400 font-semibold uppercase tracking-wide mb-3">Screenshots</p>
+                    <div class="flex gap-3 overflow-x-auto pb-2 mb-6">
+                        <div class="flex-shrink-0 w-36 h-64 bg-gray-100 rounded-2xl border-2 border-dashed border-gray-200 flex flex-col items-center justify-center gap-2 text-gray-300">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" stroke-width="1.5"/><circle cx="12" cy="17" r="1" fill="currentColor"/></svg>
+                            <span class="text-xs">Coming soon</span>
                         </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-white">FinTrack</h3>
-                            <p class="text-emerald-100 text-sm">Smart Budget Planner</p>
+                        <div class="flex-shrink-0 w-36 h-64 bg-gray-100 rounded-2xl border-2 border-dashed border-gray-200 flex flex-col items-center justify-center gap-2 text-gray-300">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" stroke-width="1.5"/><circle cx="12" cy="17" r="1" fill="currentColor"/></svg>
+                            <span class="text-xs">Coming soon</span>
                         </div>
-                        <div class="ml-auto flex gap-2">
-                            <span class="px-2 py-1 bg-white/20 text-white text-xs font-semibold rounded-full">Android</span>
-                            <span class="px-2 py-1 bg-white/20 text-white text-xs font-semibold rounded-full">iOS</span>
+                        <div class="flex-shrink-0 w-36 h-64 bg-gray-100 rounded-2xl border-2 border-dashed border-gray-200 flex flex-col items-center justify-center gap-2 text-gray-300">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" stroke-width="1.5"/><circle cx="12" cy="17" r="1" fill="currentColor"/></svg>
+                            <span class="text-xs">Coming soon</span>
+                        </div>
+                        <div class="flex-shrink-0 w-36 h-64 bg-gray-100 rounded-2xl border-2 border-dashed border-gray-200 flex flex-col items-center justify-center gap-2 text-gray-300">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" stroke-width="1.5"/><circle cx="12" cy="17" r="1" fill="currentColor"/></svg>
+                            <span class="text-xs">Coming soon</span>
                         </div>
                     </div>
-
-                    <!-- Body -->
-                    <div class="p-6 flex-grow bg-white">
-                        <p class="text-gray-600 text-sm leading-relaxed mb-5">
-                            A comprehensive personal finance app that goes beyond simple expense logging. FinTrack automates the tedious parts — parsing bank SMS, scanning receipts, and reading credit card emails — so you always know where your money went without the manual work.
-                        </p>
-
-                        <!-- Features -->
-                        <ul class="space-y-2 mb-6">
-                            <li class="flex items-start gap-2 text-sm text-gray-700">
-                                <span class="text-emerald-500 mt-0.5 flex-shrink-0">&#10003;</span>
-                                <span>Income &amp; expense tracking with custom categories and recurring bills</span>
-                            </li>
-                            <li class="flex items-start gap-2 text-sm text-gray-700">
-                                <span class="text-emerald-500 mt-0.5 flex-shrink-0">&#10003;</span>
-                                <span>Receipt OCR — snap a photo of a bill to auto-fill amount &amp; merchant</span>
-                            </li>
-                            <li class="flex items-start gap-2 text-sm text-gray-700">
-                                <span class="text-emerald-500 mt-0.5 flex-shrink-0">&#10003;</span>
-                                <span>SMS &amp; email parsing for automatic UPI and credit card transaction capture</span>
-                            </li>
-                            <li class="flex items-start gap-2 text-sm text-gray-700">
-                                <span class="text-emerald-500 mt-0.5 flex-shrink-0">&#10003;</span>
-                                <span>AI-powered transaction categorisation and spending insights</span>
-                            </li>
-                            <li class="flex items-start gap-2 text-sm text-gray-700">
-                                <span class="text-emerald-500 mt-0.5 flex-shrink-0">&#10003;</span>
-                                <span>Savings goal tracker with monthly contribution calculator</span>
-                            </li>
-                            <li class="flex items-start gap-2 text-sm text-gray-700">
-                                <span class="text-emerald-500 mt-0.5 flex-shrink-0">&#10003;</span>
-                                <span>MFA login, biometric auth &amp; Google / Apple sign-in</span>
-                            </li>
-                        </ul>
-
-                        <!-- Tech stack -->
-                        <div class="border-t border-gray-100 pt-4">
-                            <p class="text-xs text-gray-400 font-semibold uppercase tracking-wide mb-3">Tech Stack</p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 text-xs font-medium rounded-md">React Native</span>
-                                <span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 text-xs font-medium rounded-md">Expo</span>
-                                <span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 text-xs font-medium rounded-md">Spring Boot</span>
-                                <span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 text-xs font-medium rounded-md">FastAPI</span>
-                                <span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 text-xs font-medium rounded-md">MongoDB</span>
-                                <span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 text-xs font-medium rounded-md">PostgreSQL</span>
-                                <span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 text-xs font-medium rounded-md">Java (Android)</span>
-                            </div>
+                    <!-- Key features -->
+                    <p class="text-xs text-gray-400 font-semibold uppercase tracking-wide mb-3">Key Features</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-start gap-2 text-sm text-gray-700"><span class="text-emerald-500 mt-0.5 flex-shrink-0">&#10003;</span><span>Income &amp; expense tracking with custom categories and recurring bills</span></li>
+                        <li class="flex items-start gap-2 text-sm text-gray-700"><span class="text-emerald-500 mt-0.5 flex-shrink-0">&#10003;</span><span>Receipt OCR — snap a photo to auto-fill amount &amp; merchant</span></li>
+                        <li class="flex items-start gap-2 text-sm text-gray-700"><span class="text-emerald-500 mt-0.5 flex-shrink-0">&#10003;</span><span>SMS &amp; email parsing for automatic UPI and credit card capture</span></li>
+                        <li class="flex items-start gap-2 text-sm text-gray-700"><span class="text-emerald-500 mt-0.5 flex-shrink-0">&#10003;</span><span>AI-powered categorisation, spending insights &amp; savings goals</span></li>
+                        <li class="flex items-start gap-2 text-sm text-gray-700"><span class="text-emerald-500 mt-0.5 flex-shrink-0">&#10003;</span><span>Biometric auth, MFA &amp; Google / Apple sign-in</span></li>
+                    </ul>
+                    <!-- Tech stack -->
+                    <div class="border-t border-gray-100 pt-4">
+                        <p class="text-xs text-gray-400 font-semibold uppercase tracking-wide mb-3">Tech Stack</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 text-xs font-medium rounded-md">React Native</span>
+                            <span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 text-xs font-medium rounded-md">Expo</span>
+                            <span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 text-xs font-medium rounded-md">Spring Boot</span>
+                            <span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 text-xs font-medium rounded-md">FastAPI</span>
+                            <span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 text-xs font-medium rounded-md">MongoDB</span>
+                            <span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 text-xs font-medium rounded-md">PostgreSQL</span>
+                            <span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 text-xs font-medium rounded-md">Java (Android)</span>
                         </div>
                     </div>
                 </div>
-
-                <!-- Collab -->
-                <div id="app-collab" class="rounded-2xl border border-gray-100 shadow-sm overflow-hidden flex flex-col">
-                    <!-- Header band -->
-                    <div class="bg-gradient-to-br from-violet-500 to-purple-700 p-6 flex items-center gap-4">
-                        <div class="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center flex-shrink-0">
-                            <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" class="w-8 h-8">
-                                <circle cx="12" cy="14" r="6" fill="white" opacity="0.9"/>
-                                <circle cx="28" cy="14" r="6" fill="white" opacity="0.9"/>
-                                <circle cx="20" cy="28" r="6" fill="white" opacity="0.9"/>
-                                <line x1="17" y1="18" x2="23" y2="18" stroke="white" stroke-width="2" opacity="0.6"/>
-                                <line x1="14" y1="19" x2="18" y2="25" stroke="white" stroke-width="2" opacity="0.6"/>
-                                <line x1="26" y1="19" x2="22" y2="25" stroke="white" stroke-width="2" opacity="0.6"/>
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-white">Collab</h3>
-                            <p class="text-violet-200 text-sm">Influencer &times; Store Marketplace</p>
-                        </div>
-                        <div class="ml-auto flex gap-2">
-                            <span class="px-2 py-1 bg-white/20 text-white text-xs font-semibold rounded-full">Android</span>
-                            <span class="px-2 py-1 bg-white/20 text-white text-xs font-semibold rounded-full">iOS</span>
-                        </div>
-                    </div>
-
-                    <!-- Body -->
-                    <div class="p-6 flex-grow bg-white">
-                        <p class="text-gray-600 text-sm leading-relaxed mb-5">
-                            A two-sided marketplace connecting local store owners with nearby social media influencers. Store owners create promo code campaigns; influencers browse live drops and earn through barter deals or commissions — matched by pincode so collaborations stay hyper-local.
-                        </p>
-
-                        <!-- Features -->
-                        <ul class="space-y-2 mb-6">
-                            <li class="flex items-start gap-2 text-sm text-gray-700">
-                                <span class="text-violet-500 mt-0.5 flex-shrink-0">&#10003;</span>
-                                <span>Dual-role app — separate flows for Store Owners and Influencers</span>
-                            </li>
-                            <li class="flex items-start gap-2 text-sm text-gray-700">
-                                <span class="text-violet-500 mt-0.5 flex-shrink-0">&#10003;</span>
-                                <span>Campaign creator with auto-generated promo codes and QR codes</span>
-                            </li>
-                            <li class="flex items-start gap-2 text-sm text-gray-700">
-                                <span class="text-violet-500 mt-0.5 flex-shrink-0">&#10003;</span>
-                                <span>Pincode-based influencer discovery — find creators in your neighbourhood</span>
-                            </li>
-                            <li class="flex items-start gap-2 text-sm text-gray-700">
-                                <span class="text-violet-500 mt-0.5 flex-shrink-0">&#10003;</span>
-                                <span>Instagram account verification for influencer credibility</span>
-                            </li>
-                            <li class="flex items-start gap-2 text-sm text-gray-700">
-                                <span class="text-violet-500 mt-0.5 flex-shrink-0">&#10003;</span>
-                                <span>Earnings dashboard and live campaign drops feed for influencers</span>
-                            </li>
-                            <li class="flex items-start gap-2 text-sm text-gray-700">
-                                <span class="text-violet-500 mt-0.5 flex-shrink-0">&#10003;</span>
-                                <span>Barter and commission reward models with WhatsApp outreach</span>
-                            </li>
-                        </ul>
-
-                        <!-- Tech stack -->
-                        <div class="border-t border-gray-100 pt-4">
-                            <p class="text-xs text-gray-400 font-semibold uppercase tracking-wide mb-3">Tech Stack</p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-2.5 py-1 bg-violet-50 text-violet-700 text-xs font-medium rounded-md">React Native</span>
-                                <span class="px-2.5 py-1 bg-violet-50 text-violet-700 text-xs font-medium rounded-md">Expo</span>
-                                <span class="px-2.5 py-1 bg-violet-50 text-violet-700 text-xs font-medium rounded-md">TypeScript</span>
-                                <span class="px-2.5 py-1 bg-violet-50 text-violet-700 text-xs font-medium rounded-md">Supabase</span>
-                                <span class="px-2.5 py-1 bg-violet-50 text-violet-700 text-xs font-medium rounded-md">PostgreSQL</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
+
+            <!-- Collab content -->
+            <div id="modal-collab" class="hidden">
+                <div class="bg-gradient-to-br from-violet-500 to-purple-700 p-6 flex items-center gap-4 rounded-t-2xl">
+                    <div class="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center flex-shrink-0">
+                        <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" class="w-8 h-8">
+                            <circle cx="12" cy="14" r="6" fill="white" opacity="0.9"/>
+                            <circle cx="28" cy="14" r="6" fill="white" opacity="0.9"/>
+                            <circle cx="20" cy="28" r="6" fill="white" opacity="0.9"/>
+                            <line x1="17" y1="18" x2="23" y2="18" stroke="white" stroke-width="2" opacity="0.6"/>
+                            <line x1="14" y1="19" x2="18" y2="25" stroke="white" stroke-width="2" opacity="0.6"/>
+                            <line x1="26" y1="19" x2="22" y2="25" stroke="white" stroke-width="2" opacity="0.6"/>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-xl font-bold text-white">Collab</h3>
+                        <p class="text-violet-200 text-sm">Influencer &times; Store Marketplace</p>
+                    </div>
+                    <div class="flex gap-2 mr-3">
+                        <span class="px-2 py-1 bg-white/20 text-white text-xs font-semibold rounded-full">Android</span>
+                        <span class="px-2 py-1 bg-white/20 text-white text-xs font-semibold rounded-full">iOS</span>
+                    </div>
+                    <button onclick="closeAppModal()" class="text-white/70 hover:text-white transition text-2xl leading-none">&times;</button>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                        A two-sided marketplace connecting local store owners with nearby social media influencers. Matched by pincode so collaborations stay hyper-local — store owners post campaigns, influencers earn through barter deals or commissions.
+                    </p>
+                    <!-- Screenshots -->
+                    <p class="text-xs text-gray-400 font-semibold uppercase tracking-wide mb-3">Screenshots</p>
+                    <div class="flex gap-3 overflow-x-auto pb-2 mb-6">
+                        <div class="flex-shrink-0 w-36 h-64 bg-gray-100 rounded-2xl border-2 border-dashed border-gray-200 flex flex-col items-center justify-center gap-2 text-gray-300">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" stroke-width="1.5"/><circle cx="12" cy="17" r="1" fill="currentColor"/></svg>
+                            <span class="text-xs">Coming soon</span>
+                        </div>
+                        <div class="flex-shrink-0 w-36 h-64 bg-gray-100 rounded-2xl border-2 border-dashed border-gray-200 flex flex-col items-center justify-center gap-2 text-gray-300">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" stroke-width="1.5"/><circle cx="12" cy="17" r="1" fill="currentColor"/></svg>
+                            <span class="text-xs">Coming soon</span>
+                        </div>
+                        <div class="flex-shrink-0 w-36 h-64 bg-gray-100 rounded-2xl border-2 border-dashed border-gray-200 flex flex-col items-center justify-center gap-2 text-gray-300">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" stroke-width="1.5"/><circle cx="12" cy="17" r="1" fill="currentColor"/></svg>
+                            <span class="text-xs">Coming soon</span>
+                        </div>
+                        <div class="flex-shrink-0 w-36 h-64 bg-gray-100 rounded-2xl border-2 border-dashed border-gray-200 flex flex-col items-center justify-center gap-2 text-gray-300">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" stroke-width="1.5"/><circle cx="12" cy="17" r="1" fill="currentColor"/></svg>
+                            <span class="text-xs">Coming soon</span>
+                        </div>
+                    </div>
+                    <!-- Key features -->
+                    <p class="text-xs text-gray-400 font-semibold uppercase tracking-wide mb-3">Key Features</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-start gap-2 text-sm text-gray-700"><span class="text-violet-500 mt-0.5 flex-shrink-0">&#10003;</span><span>Dual-role app — separate flows for Store Owners and Influencers</span></li>
+                        <li class="flex items-start gap-2 text-sm text-gray-700"><span class="text-violet-500 mt-0.5 flex-shrink-0">&#10003;</span><span>Campaign creator with auto-generated promo codes and QR codes</span></li>
+                        <li class="flex items-start gap-2 text-sm text-gray-700"><span class="text-violet-500 mt-0.5 flex-shrink-0">&#10003;</span><span>Pincode-based influencer discovery — find creators in your neighbourhood</span></li>
+                        <li class="flex items-start gap-2 text-sm text-gray-700"><span class="text-violet-500 mt-0.5 flex-shrink-0">&#10003;</span><span>Instagram verification, earnings dashboard &amp; live campaign drops</span></li>
+                        <li class="flex items-start gap-2 text-sm text-gray-700"><span class="text-violet-500 mt-0.5 flex-shrink-0">&#10003;</span><span>Barter and commission reward models with WhatsApp outreach</span></li>
+                    </ul>
+                    <!-- Tech stack -->
+                    <div class="border-t border-gray-100 pt-4">
+                        <p class="text-xs text-gray-400 font-semibold uppercase tracking-wide mb-3">Tech Stack</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2.5 py-1 bg-violet-50 text-violet-700 text-xs font-medium rounded-md">React Native</span>
+                            <span class="px-2.5 py-1 bg-violet-50 text-violet-700 text-xs font-medium rounded-md">Expo</span>
+                            <span class="px-2.5 py-1 bg-violet-50 text-violet-700 text-xs font-medium rounded-md">TypeScript</span>
+                            <span class="px-2.5 py-1 bg-violet-50 text-violet-700 text-xs font-medium rounded-md">Supabase</span>
+                            <span class="px-2.5 py-1 bg-violet-50 text-violet-700 text-xs font-medium rounded-md">PostgreSQL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-    </section>
+    </div>
 
     <section id="interests" class="py-20 bg-gray-50">
         <div class="max-w-6xl mx-auto px-4">

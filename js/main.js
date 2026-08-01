@@ -1,14 +1,15 @@
 function scrollToApp(id) {
     event.preventDefault();
-    document.getElementById('apps').classList.remove('hidden');
-    const el = document.getElementById(id);
-    if (!el) return;
-    setTimeout(() => {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        el.classList.add('ring-2', 'ring-offset-2');
-        el.classList.add(id === 'app-fintrack' ? 'ring-emerald-400' : 'ring-violet-400');
-        setTimeout(() => el.classList.remove('ring-2', 'ring-offset-2', 'ring-emerald-400', 'ring-violet-400'), 1800);
-    }, 50);
+    document.querySelectorAll('#app-modal [id^="modal-"]').forEach(el => el.classList.add('hidden'));
+    const modalId = id === 'app-fintrack' ? 'modal-fintrack' : 'modal-collab';
+    document.getElementById(modalId).classList.remove('hidden');
+    document.getElementById('app-modal').classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeAppModal() {
+    document.getElementById('app-modal').classList.add('hidden');
+    document.body.style.overflow = '';
 }
 
 function togglePoems() {
