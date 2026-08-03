@@ -44,3 +44,46 @@ function showPoemsIndex() {
     document.getElementById('poems-detail').classList.add('hidden');
     document.getElementById('poems-index').classList.remove('hidden');
 }
+
+function toggleLike(poemId) {
+    const liked = localStorage.getItem('like_' + poemId) === 'true';
+    const count = parseInt(localStorage.getItem('like_count_' + poemId) || '0');
+    const newLiked = !liked;
+    const newCount = newLiked ? count + 1 : Math.max(0, count - 1);
+    localStorage.setItem('like_' + poemId, newLiked);
+    localStorage.setItem('like_count_' + poemId, newCount);
+    applyLikeUI(poemId, newLiked, newCount);
+}
+
+function applyLikeUI(poemId, liked, count) {
+    const heart = document.getElementById('like-heart-' + poemId);
+    const countEl = document.getElementById('like-count-' + poemId);
+    const btn = document.getElementById('like-btn-' + poemId);
+    if (!heart) return;
+    if (liked) {
+        heart.setAttribute('fill', 'currentColor');
+        heart.classList.add('text-rose-500');
+        heart.classList.remove('text-gray-400');
+        btn.classList.add('border-rose-300', 'bg-rose-50');
+        btn.classList.remove('border-gray-200');
+        countEl.classList.add('text-rose-500');
+        countEl.classList.remove('text-gray-500');
+    } else {
+        heart.setAttribute('fill', 'none');
+        heart.classList.remove('text-rose-500');
+        heart.classList.add('text-gray-400');
+        btn.classList.remove('border-rose-300', 'bg-rose-50');
+        btn.classList.add('border-gray-200');
+        countEl.classList.remove('text-rose-500');
+        countEl.classList.add('text-gray-500');
+    }
+    countEl.textContent = count;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    ['poem1', 'poem2', 'poem3', 'poem4', 'poem5'].forEach(function(poemId) {
+        const liked = localStorage.getItem('like_' + poemId) === 'true';
+        const count = parseInt(localStorage.getItem('like_count_' + poemId) || '0');
+        applyLikeUI(poemId, liked, count);
+    });
+});
