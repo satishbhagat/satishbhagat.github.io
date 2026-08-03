@@ -9,16 +9,33 @@
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans antialiased">
 
-    <nav class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md shadow-sm z-50">
+    <nav class="fixed top-0 left-0 w-full bg-white/95 backdrop-blur-md shadow-sm z-50">
         <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
             <a href="#" class="text-xl font-bold tracking-wide text-blue-600">SK</a>
-            <div class="space-x-6 font-medium text-gray-600">
+            <!-- Desktop links -->
+            <div class="hidden md:flex space-x-6 font-medium text-gray-600 text-sm">
                 <a href="#about" class="hover:text-blue-600 transition">About</a>
                 <a href="#focus" class="hover:text-blue-600 transition">What I Do</a>
-                <a href="#journey" class="hover:text-blue-600 transition">My Journey</a>
+                <a href="#journey" class="hover:text-blue-600 transition">Journey</a>
                 <a href="#interests" class="hover:text-blue-600 transition">Life & Travel</a>
                 <a href="#poems" onclick="openPoems()" class="hover:text-blue-600 transition">Poems</a>
                 <a href="#contact" class="hover:text-blue-600 transition">Contact</a>
+            </div>
+            <!-- Hamburger -->
+            <button onclick="toggleNav()" class="md:hidden p-2 rounded-xl text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition focus:outline-none">
+                <svg id="nav-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                <svg id="nav-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white/98 shadow-lg">
+            <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col gap-1">
+                <a href="#about"    onclick="closeNav()" class="py-3 px-4 rounded-xl text-gray-700 font-medium hover:bg-blue-50 hover:text-blue-600 transition">About</a>
+                <a href="#focus"    onclick="closeNav()" class="py-3 px-4 rounded-xl text-gray-700 font-medium hover:bg-blue-50 hover:text-blue-600 transition">What I Do</a>
+                <a href="#journey"  onclick="closeNav()" class="py-3 px-4 rounded-xl text-gray-700 font-medium hover:bg-blue-50 hover:text-blue-600 transition">My Journey</a>
+                <a href="#interests" onclick="closeNav()" class="py-3 px-4 rounded-xl text-gray-700 font-medium hover:bg-blue-50 hover:text-blue-600 transition">Life & Travel</a>
+                <a href="#poems"    onclick="openPoems();closeNav()" class="py-3 px-4 rounded-xl text-gray-700 font-medium hover:bg-blue-50 hover:text-blue-600 transition">Poems</a>
+                <a href="#contact"  onclick="closeNav()" class="py-3 px-4 rounded-xl text-gray-700 font-medium hover:bg-blue-50 hover:text-blue-600 transition">Contact</a>
             </div>
         </div>
     </nav>
@@ -240,11 +257,22 @@
     </div>
 
     <!-- ═══════════════════ JOURNEY SECTION ═══════════════════ -->
-    <section id="journey" class="py-20 bg-white border-t border-gray-100">
+    <section id="journey" class="py-12 bg-white border-t border-gray-100">
         <div class="max-w-3xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center text-gray-900 mb-2">My Journey</h2>
-            <p class="text-center text-gray-400 text-sm mb-14">Places I've called home</p>
+            <button onclick="toggleJourney()" class="w-full flex items-center justify-between group text-left py-3 focus:outline-none">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-400 to-indigo-500 flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow flex-shrink-0">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    </div>
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-900 group-hover:text-blue-600 transition">My Journey</h2>
+                        <p class="text-gray-400 text-sm mt-0.5">Places I've called home</p>
+                    </div>
+                </div>
+                <span id="journey-toggle-icon" class="text-4xl font-light text-gray-300 group-hover:text-blue-500 transition leading-none select-none">+</span>
+            </button>
 
+            <div id="journey-body" class="hidden mt-8 section-body">
             <div class="relative">
                 <!-- Timeline spine -->
                 <div class="absolute left-5 top-2 bottom-2 w-0.5 bg-gradient-to-b from-blue-300 via-violet-200 via-rose-200 to-rose-400"></div>
@@ -362,15 +390,28 @@
 
                 </div>
             </div>
+            </div>
         </div>
     </section>
 
-    <section id="interests" class="py-20 bg-gray-50">
+    <section id="interests" class="py-16 bg-gray-50">
         <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">Life Outside the Code</h2>
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-2">Life Outside the Code</h2>
+            <p class="text-center text-gray-400 text-sm mb-8">Hobbies · Travel · Adventures</p>
 
-            <!-- Hobbies -->
-            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 mb-16">
+            <!-- Tab bar -->
+            <div class="tabs-scroll overflow-x-auto mb-10">
+                <div class="flex gap-1.5 bg-white rounded-2xl p-1.5 shadow-sm border border-gray-100 w-fit mx-auto min-w-full sm:min-w-0">
+                    <button onclick="switchTab('tab-hobbies')"  id="btn-tab-hobbies"  class="tab-btn active  flex-1 whitespace-nowrap py-2.5 px-4 rounded-xl text-sm font-semibold">🎮 Hobbies</button>
+                    <button onclick="switchTab('tab-world')"    id="btn-tab-world"    class="tab-btn        flex-1 whitespace-nowrap py-2.5 px-4 rounded-xl text-sm font-semibold">🌍 World</button>
+                    <button onclick="switchTab('tab-india')"    id="btn-tab-india"    class="tab-btn        flex-1 whitespace-nowrap py-2.5 px-4 rounded-xl text-sm font-semibold">🇮🇳 India</button>
+                    <button onclick="switchTab('tab-roads')"    id="btn-tab-roads"    class="tab-btn        flex-1 whitespace-nowrap py-2.5 px-4 rounded-xl text-sm font-semibold">🚗 Road Trips</button>
+                </div>
+            </div>
+
+            <!-- ── TAB: Hobbies ── -->
+            <div id="tab-hobbies" class="tab-panel">
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
 
                 <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
                     <img src="images/hobbies/cricket.jpg" alt="Weekend Cricket" class="w-full h-48 object-cover" onerror="this.src='https://via.placeholder.com/400x300/e2e8f0/94a3b8?text=Cricket+Photo'">
@@ -434,10 +475,12 @@
                 </div>
 
             </div>
+            </div><!-- /tab-hobbies -->
 
-            <!-- International Travel -->
-            <h3 class="text-2xl font-bold text-gray-900 mb-6 border-b pb-2 border-gray-200">Travel Log: International Adventures</h3>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+            <!-- ── TAB: World Travel ── -->
+            <div id="tab-world" class="tab-panel hidden">
+            <h3 class="text-lg font-bold text-gray-700 mb-6">🌍 International Adventures</h3>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
                 <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col">
                     <img src="images/travel/international/newyork.jpg" alt="United States" class="w-full h-48 object-cover" onerror="this.src='https://via.placeholder.com/400x300/e2e8f0/94a3b8?text=USA+Travel'">
@@ -494,11 +537,11 @@
                 </div>
 
             </div>
+            </div><!-- /tab-world -->
 
-            <!-- Indian Adventures -->
-            <h3 class="text-2xl font-bold text-gray-900 mb-6 border-b pb-2 border-gray-200">Domestic Adventures: India</h3>
-
-            <!-- Featured photo cards -->
+            <!-- ── TAB: India Adventures ── -->
+            <div id="tab-india" class="tab-panel hidden">
+            <h3 class="text-lg font-bold text-gray-700 mb-6">🇮🇳 Domestic Adventures</h3>
             <div class="grid md:grid-cols-3 gap-6 mb-8">
                 <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col">
                     <img src="images/travel/india/ladakh-bike.jpg" alt="Ladakh Bike Trip" class="w-full h-48 object-cover">
@@ -526,7 +569,30 @@
                 </div>
             </div>
 
-            <!-- Road Trips -->
+            <!-- Places visited grid -->
+            <h4 class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-4">More Places Explored</h4>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                <div class="bg-white rounded-xl border border-gray-100 p-4 hover:border-orange-200 card-lift flex items-center gap-3"><span class="text-2xl">🕉️</span><div><p class="font-semibold text-gray-800 text-sm">Varanasi</p><p class="text-xs text-gray-400">Ghats, Ganga &amp; eternity</p></div></div>
+                <div class="bg-white rounded-xl border border-gray-100 p-4 hover:border-teal-200 card-lift flex items-center gap-3"><span class="text-2xl">🚣</span><div><p class="font-semibold text-gray-800 text-sm">Alleppey</p><p class="text-xs text-gray-400">Kerala backwaters</p></div></div>
+                <div class="bg-white rounded-xl border border-gray-100 p-4 hover:border-amber-200 card-lift flex items-center gap-3"><span class="text-2xl">🥥</span><div><p class="font-semibold text-gray-800 text-sm">Udupi</p><p class="text-xs text-gray-400">Temple town &amp; coastal flavours</p></div></div>
+                <div class="bg-white rounded-xl border border-gray-100 p-4 hover:border-green-200 card-lift flex items-center gap-3"><span class="text-2xl">🐘</span><div><p class="font-semibold text-gray-800 text-sm">Kabini</p><p class="text-xs text-gray-400">Wildlife &amp; jungle safaris</p></div></div>
+                <div class="bg-white rounded-xl border border-gray-100 p-4 hover:border-yellow-200 card-lift flex items-center gap-3"><span class="text-2xl">🏯</span><div><p class="font-semibold text-gray-800 text-sm">Rajgir</p><p class="text-xs text-gray-400">Ancient Magadha capital</p></div></div>
+                <div class="bg-white rounded-xl border border-gray-100 p-4 hover:border-yellow-200 card-lift flex items-center gap-3"><span class="text-2xl">☸️</span><div><p class="font-semibold text-gray-800 text-sm">Bodh Gaya</p><p class="text-xs text-gray-400">Where Buddha attained enlightenment</p></div></div>
+                <div class="bg-white rounded-xl border border-gray-100 p-4 hover:border-amber-200 card-lift flex items-center gap-3"><span class="text-2xl">📚</span><div><p class="font-semibold text-gray-800 text-sm">Nalanda</p><p class="text-xs text-gray-400">Ancient university ruins</p></div></div>
+                <div class="bg-white rounded-xl border border-gray-100 p-4 hover:border-amber-200 card-lift flex items-center gap-3"><span class="text-2xl">☕</span><div><p class="font-semibold text-gray-800 text-sm">Chikmagaluru</p><p class="text-xs text-gray-400">Coffee hills of Karnataka</p></div></div>
+                <div class="bg-white rounded-xl border border-gray-100 p-4 hover:border-emerald-200 card-lift flex items-center gap-3"><span class="text-2xl">🌿</span><div><p class="font-semibold text-gray-800 text-sm">Kalasa</p><p class="text-xs text-gray-400">Western Ghats hidden gem</p></div></div>
+                <div class="bg-white rounded-xl border border-gray-100 p-4 hover:border-blue-200 card-lift flex items-center gap-3"><span class="text-2xl">⚓</span><div><p class="font-semibold text-gray-800 text-sm">Karwar</p><p class="text-xs text-gray-400">Pristine Karnataka coast</p></div></div>
+                <div class="bg-white rounded-xl border border-gray-100 p-4 hover:border-indigo-200 card-lift flex items-center gap-3"><span class="text-2xl">🏔️</span><div><p class="font-semibold text-gray-800 text-sm">Kasol</p><p class="text-xs text-gray-400">Parvati Valley trekker's haven</p></div></div>
+                <div class="bg-white rounded-xl border border-gray-100 p-4 hover:border-cyan-200 card-lift flex items-center gap-3"><span class="text-2xl">🧘</span><div><p class="font-semibold text-gray-800 text-sm">Rishikesh</p><p class="text-xs text-gray-400">Yoga, rafting &amp; the Ganga</p></div></div>
+                <div class="bg-white rounded-xl border border-gray-100 p-4 hover:border-green-200 card-lift flex items-center gap-3"><span class="text-2xl">🌧️</span><div><p class="font-semibold text-gray-800 text-sm">Madikeri (Coorg)</p><p class="text-xs text-gray-400">Scotland of India</p></div></div>
+                <div class="bg-white rounded-xl border border-gray-100 p-4 hover:border-yellow-200 card-lift flex items-center gap-3"><span class="text-2xl">👑</span><div><p class="font-semibold text-gray-800 text-sm">Mysuru</p><p class="text-xs text-gray-400">City of palaces &amp; culture</p></div></div>
+                <div class="bg-white rounded-xl border border-gray-100 p-4 hover:border-blue-200 card-lift flex items-center gap-3"><span class="text-2xl">🌊</span><div><p class="font-semibold text-gray-800 text-sm">Goa</p><p class="text-xs text-gray-400">Sun, sea &amp; shacks</p></div></div>
+                <div class="bg-white rounded-xl border border-gray-100 p-4 hover:border-yellow-200 card-lift flex items-center gap-3"><span class="text-2xl">🏖️</span><div><p class="font-semibold text-gray-800 text-sm">Puducherry</p><p class="text-xs text-gray-400">French Quarter &amp; calm beaches</p></div></div>
+            </div>
+            </div><!-- /tab-india -->
+
+            <!-- ── TAB: Road Trips ── -->
+            <div id="tab-roads" class="tab-panel hidden">
             <h4 class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-4">🚗 Road Trips from Bangalore</h4>
             <div class="grid sm:grid-cols-2 gap-4 mb-8">
 
@@ -673,91 +739,8 @@
 
             </div>
 
-            <!-- Places visited grid -->
-            <h4 class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-4">More Places Explored</h4>
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            </div><!-- /tab-roads -->
 
-                <div class="bg-white rounded-xl border border-gray-100 p-4 hover:border-blue-200 hover:shadow-sm transition-all flex items-center gap-3">
-                    <span class="text-2xl">🌊</span>
-                    <div><p class="font-semibold text-gray-800 text-sm">Goa</p><p class="text-xs text-gray-400">Sun, sea & shacks</p></div>
-                </div>
-
-                <div class="bg-white rounded-xl border border-gray-100 p-4 hover:border-yellow-200 hover:shadow-sm transition-all flex items-center gap-3">
-                    <span class="text-2xl">🏖️</span>
-                    <div><p class="font-semibold text-gray-800 text-sm">Puducherry</p><p class="text-xs text-gray-400">French Quarter & calm beaches</p></div>
-                </div>
-
-                <div class="bg-white rounded-xl border border-gray-100 p-4 hover:border-orange-200 hover:shadow-sm transition-all flex items-center gap-3">
-                    <span class="text-2xl">🕉️</span>
-                    <div><p class="font-semibold text-gray-800 text-sm">Varanasi</p><p class="text-xs text-gray-400">Ghats, Ganga & eternity</p></div>
-                </div>
-
-                <div class="bg-white rounded-xl border border-gray-100 p-4 hover:border-teal-200 hover:shadow-sm transition-all flex items-center gap-3">
-                    <span class="text-2xl">🚣</span>
-                    <div><p class="font-semibold text-gray-800 text-sm">Alleppey</p><p class="text-xs text-gray-400">Kerala backwaters & houseboats</p></div>
-                </div>
-
-                <div class="bg-white rounded-xl border border-gray-100 p-4 hover:border-amber-200 hover:shadow-sm transition-all flex items-center gap-3">
-                    <span class="text-2xl">🥥</span>
-                    <div><p class="font-semibold text-gray-800 text-sm">Udupi</p><p class="text-xs text-gray-400">Temple town & coastal flavours</p></div>
-                </div>
-
-                <div class="bg-white rounded-xl border border-gray-100 p-4 hover:border-green-200 hover:shadow-sm transition-all flex items-center gap-3">
-                    <span class="text-2xl">🐘</span>
-                    <div><p class="font-semibold text-gray-800 text-sm">Kabini</p><p class="text-xs text-gray-400">Wildlife &amp; jungle safaris</p></div>
-                </div>
-
-                <div class="bg-white rounded-xl border border-gray-100 p-4 hover:border-yellow-200 hover:shadow-sm transition-all flex items-center gap-3">
-                    <span class="text-2xl">🏯</span>
-                    <div><p class="font-semibold text-gray-800 text-sm">Rajgir</p><p class="text-xs text-gray-400">Ancient Magadha capital</p></div>
-                </div>
-
-                <div class="bg-white rounded-xl border border-gray-100 p-4 hover:border-yellow-200 hover:shadow-sm transition-all flex items-center gap-3">
-                    <span class="text-2xl">☸️</span>
-                    <div><p class="font-semibold text-gray-800 text-sm">Bodh Gaya</p><p class="text-xs text-gray-400">Where Buddha attained enlightenment</p></div>
-                </div>
-
-                <div class="bg-white rounded-xl border border-gray-100 p-4 hover:border-amber-200 hover:shadow-sm transition-all flex items-center gap-3">
-                    <span class="text-2xl">📚</span>
-                    <div><p class="font-semibold text-gray-800 text-sm">Nalanda</p><p class="text-xs text-gray-400">Ruins of the ancient university</p></div>
-                </div>
-
-                <div class="bg-white rounded-xl border border-gray-100 p-4 hover:border-amber-200 hover:shadow-sm transition-all flex items-center gap-3">
-                    <span class="text-2xl">☕</span>
-                    <div><p class="font-semibold text-gray-800 text-sm">Chikmagaluru</p><p class="text-xs text-gray-400">Coffee hills of Karnataka</p></div>
-                </div>
-
-                <div class="bg-white rounded-xl border border-gray-100 p-4 hover:border-emerald-200 hover:shadow-sm transition-all flex items-center gap-3">
-                    <span class="text-2xl">🌿</span>
-                    <div><p class="font-semibold text-gray-800 text-sm">Kalasa</p><p class="text-xs text-gray-400">Western Ghats hidden gem</p></div>
-                </div>
-
-                <div class="bg-white rounded-xl border border-gray-100 p-4 hover:border-blue-200 hover:shadow-sm transition-all flex items-center gap-3">
-                    <span class="text-2xl">⚓</span>
-                    <div><p class="font-semibold text-gray-800 text-sm">Karwar</p><p class="text-xs text-gray-400">Pristine Karnataka coast</p></div>
-                </div>
-
-                <div class="bg-white rounded-xl border border-gray-100 p-4 hover:border-indigo-200 hover:shadow-sm transition-all flex items-center gap-3">
-                    <span class="text-2xl">🏔️</span>
-                    <div><p class="font-semibold text-gray-800 text-sm">Kasol</p><p class="text-xs text-gray-400">Parvati Valley trekker's haven</p></div>
-                </div>
-
-                <div class="bg-white rounded-xl border border-gray-100 p-4 hover:border-cyan-200 hover:shadow-sm transition-all flex items-center gap-3">
-                    <span class="text-2xl">🧘</span>
-                    <div><p class="font-semibold text-gray-800 text-sm">Rishikesh</p><p class="text-xs text-gray-400">Yoga, rafting & the Ganga</p></div>
-                </div>
-
-                <div class="bg-white rounded-xl border border-gray-100 p-4 hover:border-green-200 hover:shadow-sm transition-all flex items-center gap-3">
-                    <span class="text-2xl">🌧️</span>
-                    <div><p class="font-semibold text-gray-800 text-sm">Madikeri (Coorg)</p><p class="text-xs text-gray-400">Scotland of India</p></div>
-                </div>
-
-                <div class="bg-white rounded-xl border border-gray-100 p-4 hover:border-yellow-200 hover:shadow-sm transition-all flex items-center gap-3">
-                    <span class="text-2xl">👑</span>
-                    <div><p class="font-semibold text-gray-800 text-sm">Mysuru</p><p class="text-xs text-gray-400">City of palaces &amp; culture</p></div>
-                </div>
-
-            </div>
         </div>
     </section>
 

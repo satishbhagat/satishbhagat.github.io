@@ -1,3 +1,35 @@
+function toggleNav() {
+    const menu = document.getElementById('mobile-menu');
+    const iconOpen = document.getElementById('nav-icon-open');
+    const iconClose = document.getElementById('nav-icon-close');
+    const isHidden = menu.classList.toggle('hidden');
+    iconOpen.classList.toggle('hidden', !isHidden);
+    iconClose.classList.toggle('hidden', isHidden);
+}
+
+function closeNav() {
+    document.getElementById('mobile-menu').classList.add('hidden');
+    document.getElementById('nav-icon-open').classList.remove('hidden');
+    document.getElementById('nav-icon-close').classList.add('hidden');
+}
+
+function toggleJourney() {
+    const body = document.getElementById('journey-body');
+    const icon = document.getElementById('journey-toggle-icon');
+    const isHidden = body.classList.toggle('hidden');
+    icon.textContent = isHidden ? '+' : '−';
+    if (!isHidden) {
+        setTimeout(() => document.getElementById('journey').scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+    }
+}
+
+function switchTab(tabId) {
+    document.querySelectorAll('.tab-panel').forEach(el => el.classList.add('hidden'));
+    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    document.getElementById(tabId).classList.remove('hidden');
+    document.getElementById('btn-' + tabId).classList.add('active');
+}
+
 function scrollToApp(id) {
     event.preventDefault();
     document.querySelectorAll('#app-modal [id^="modal-"]').forEach(el => el.classList.add('hidden'));
