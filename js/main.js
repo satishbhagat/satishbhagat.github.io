@@ -25,9 +25,14 @@ function toggleJourney() {
 
 function switchTab(tabId) {
     document.querySelectorAll('.tab-panel').forEach(el => el.classList.add('hidden'));
-    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
+        btn.classList.add('bg-gray-100', 'text-gray-500');
+    });
     document.getElementById(tabId).classList.remove('hidden');
-    document.getElementById('btn-' + tabId).classList.add('active');
+    const active = document.getElementById('btn-' + tabId);
+    active.classList.remove('bg-gray-100', 'text-gray-500');
+    active.classList.add('bg-blue-600', 'text-white', 'shadow-md');
 }
 
 function scrollToApp(id) {
